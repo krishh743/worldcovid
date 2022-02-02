@@ -1,0 +1,95 @@
+.Mid{
+ position: absolute;
+height: 800px;
+width: 100%;
+background-color: rgb(144, 144, 184);
+}
+
+.LeftBar{
+height: 800px;
+width: 300px;
+  position: absolute;
+    top: 0;
+    left: 0;
+background-color: darkblue;
+}
+
+.fouthIcon{
+margin: 30px;
+padding: 0 7px 0 7px;
+width: 50px;
+height:auto;
+cursor: pointer;
+}
+
+.firstIcon{
+margin: 30px;
+width: 50px;
+height:auto;
+padding: 0 7px 0 7px;
+cursor: pointer;
+
+}
+.firstIcon:focus{
+background-color: cornsilk;
+}
+
+.thirdIcon{
+margin: 30px;
+width: 50px;
+height:auto;
+padding: 0 7px 0 7px;
+cursor: pointer;
+}
+
+.fourthIcon{
+margin:110px;
+padding:0px;
+width: 50px;
+height:auto;
+cursor: pointer;
+}
+
+
+/* .symptoms{
+padding: 40px;
+margin: 50px;
+} */
+
+.Simg{
+height: 150px;
+width: 250px;
+margin: 40px;
+}
+
+.location{
+cursor: pointer;
+margin:10px;
+padding: 10px;
+}
+
+.location:focus {     
+    background-color:blue;    
+}
+
+.RightDiv{
+height: 800px;
+width: 300px;
+  position: absolute;
+    top: 0;
+    right: 0;
+background-color: darkblue;
+
+}
+
+
+.Mid-down-div{
+    position:absolute;
+    width:100%;
+    bottom:0;
+    text-align:center;
+}
+.world{
+height: 400px;
+width: 600px;
+}
