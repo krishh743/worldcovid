@@ -8,11 +8,23 @@ import React from "react";
 function Mid() {
   const [users, setUsers] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [countriesData, setCountriesData] = useState([]);
+  const [showContinentData, setShowContinentData] = useState(true);
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const toggleShowData = () => {
+    if (showContinentData == false) {
+      setShowContinentData(true);
+    } else if (showContinentData == true) {
+      setShowContinentData(false);
+    }
   };
 
   const fetchData = () => {
@@ -25,10 +37,25 @@ function Mid() {
       });
   };
 
+  const fetchCountriesData = () => {
+    fetch("https://corona.lmao.ninja/v2/countries?yesterday=true&sort=")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setCountriesData(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     fetchData();
+    fetchCountriesData();
   }, []);
   console.log(users);
+  console.log(countriesData);
 
   return (
     <>
@@ -125,6 +152,79 @@ function Mid() {
               src="https://media.istockphoto.com/vectors/covid19-coronavirus-infographic-vector-id1212677375?k=20&m=1212677375&s=612x612&w=0&h=XPOyPqu4pSbz836tcDq4S0krJVC7_jABpGB0xvdGxMk="
             />
           </div>
+          {/* Filter Buttons Starts */}
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: "2rem",
+                width: "100%",
+                gap: "0.5rem",
+              }}
+            >
+              <button
+                style={{
+                  width: "100%",
+                  padding: "0.5rem",
+                  backgroundColor: showContinentData ? "skyblue" : "",
+                }}
+                onClick={toggleShowData}
+              >
+                Continents
+              </button>
+              <button
+                style={{
+                  width: "100%",
+                  padding: "0.5rem",
+                  backgroundColor: showContinentData ? "" : "skyblue",
+                }}
+                onClick={toggleShowData}
+              >
+                Countries
+              </button>
+            </div>
+          </div>
+          {/* Filter Buttons Ends */}
+          {/* Stats Section Starts */}
+          <div
+            style={{
+              backgroundColor: "white",
+              height: "20rem",
+              overflowY: "scroll",
+              padding: "1rem",
+            }}
+          >
+            {showContinentData
+              ? users.length > 0 && (
+                  <>
+                    <div>Continent Wise</div>
+                    <div>
+                      {users.map((user) => (
+                        <p key={user} style={{ textAlign: "left" }}>
+                          {" "}
+                          {user.continent} : {user.active}
+                        </p>
+                      ))}
+                    </div>
+                  </>
+                )
+              : countriesData.length > 0 && (
+                  <>
+                    <div>Country Wise</div>
+                    <div>
+                      {countriesData.map((country) => (
+                        <p key={country} style={{ textAlign: "left" }}>
+                          {" "}
+                          {country.country} : {country.cases}
+                        </p>
+                      ))}
+                    </div>
+                  </>
+                )}
+          </div>
+          {/* Stats Section Ends */}
         </div>
       </div>
       {
