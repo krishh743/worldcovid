@@ -30,19 +30,6 @@ function Mid() {
   }, []);
   console.log(users);
 
-  // const makeAPICall = async () => {
-  //     try {
-  //         const response = await fetch('https://corona.lmao.ninja/v2/continents?yesterday=true&sort=');
-  //         const data = await response.json();
-  //         console.log(data);
-  //     }
-  //     catch (e) {
-  //         console.log(e)
-  //     }
-  // }
-  // useEffect(() => {
-  //     makeAPICall();
-  // }, [])
   return (
     <>
       <div className="Mid">
@@ -52,10 +39,33 @@ function Mid() {
           CoronaVirus Covid -10 Global Cases
         </h2>
 
+        <div className="Side2">
+          <div className="Side1">
+            <h3> Total Confirmed </h3>
+            {users.length > 0 && (
+              <div>
+                {users.map((user) => (
+                  <p key={user}>
+                    {" "}
+                    {user.continent} : {user.active}
+                  </p>
+                ))}
+              </div>
+            )}
+            {/* <p id="infor"></p> */}
+          </div>
+          <div className="Side1">
+            <p> Total Deaths</p>
+          </div>
+          <div className="Side1">
+            <p> Total deaths</p>
+          </div>
+        </div>
+
         <div className="Mid-down-div">
           <h2>
-            Confirmed cases by Continents{" "}
-            <input type="text" placeholder="Serach" />
+            Confirmed cases by Continents &nbsp; &nbsp;&nbsp;
+            <input className="searchinput" type="text" placeholder="Serach" />
           </h2>
           <img
             onClick={() => {

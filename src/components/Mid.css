@@ -90,6 +90,31 @@ background-color: darkblue;
     text-align:center;
 }
 .world{
-height: 400px;
+height: 300px;
 width: 600px;
+}
+
+.searchinput{
+ background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.Side2{
+float: left;
+margin-left: 500px;
+}
+.Side1{
+border: 1px solid black;
+border-radius: 10px;
+float:left;
+margin: 50px;
+
 }
